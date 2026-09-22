@@ -1,0 +1,48 @@
+type Literal = 'red' | 'green'
+type Id = number[];
+
+interface Base {
+    username: string;
+    age: number;
+}
+
+interface User extends Base {
+    password: string;
+}
+
+type User1 = Base & {
+    password: string;
+}
+
+interface Base1 {
+    username: string;
+    age: number;
+}
+
+interface Base1 {
+    password: string;
+}
+
+// const user: Base1 = {
+
+// }
+
+type Tuple = [number, string, 5]
+
+const tupple: Tuple = [5, '1', 5]
+
+type SetState<T> = [T, (newValue: T) => void]
+
+type Fn = (arg: number) => string;
+
+interface Fn2 {
+    (arg: number): string;
+}
+
+const fn: Fn = (arg: number) => {
+    return '123'
+};
+
+const fn2: Fn2 = (arg: number) => {
+    return '123'
+};

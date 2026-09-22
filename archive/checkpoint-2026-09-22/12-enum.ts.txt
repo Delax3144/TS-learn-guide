@@ -1,0 +1,45 @@
+export {}
+
+type ValueOf<T> = T[keyof T];
+
+const Color = {
+    RED: 'red',
+    GREEN: 'green',
+    BLUE: 'blue',
+} as const
+
+type Color = ValueOf<typeof Color>;
+
+enum Color2 {
+    RED = "red",
+    GREEN = "green",
+    BLUE = "blue",
+}
+
+enum Color3 {
+    RED,
+    GREEN,
+    BLUE = 5,
+    YELLOW,
+}
+
+function setColor(color: Color2) {
+    
+}
+
+setColor(Color2.BLUE)
+
+const enum Color4 {
+    RED = "red",
+    GREEN = "green",
+    BLUE = "blue",
+}
+
+enum Color5 {
+    RED,
+    GREEN,
+    BLUE,
+    YELLOW,
+}
+
+console.log(Color5[2]);

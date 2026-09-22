@@ -1,0 +1,33 @@
+export {}
+
+// typeof
+
+const obj = {
+    age: 25,
+    username: 'Vasya',
+};
+
+type Person = typeof obj;
+
+let color = 'red';
+
+type RedColor = typeof color;
+
+const green: RedColor = 'green';
+
+function getData(user: Person) {
+    return 5;
+}
+
+type GetDataFn = typeof getData;
+
+type GetDataReturnValue = ReturnType<typeof getData>
+type GetDataParams = Parameters<typeof getData>
+
+// keyof
+
+type PersonKey = keyof typeof obj;
+
+function getByKey<T, K extends keyof T>(obj: T, key: K): T[K] {
+    return obj[key];
+}

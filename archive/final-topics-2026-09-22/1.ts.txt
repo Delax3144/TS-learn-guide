@@ -15,16 +15,7 @@ export {};
 // 12-enums-and-const-objects.ts — enum и объект as const.
 // 13-interface-vs-type-and-tuples.ts — сравнение interface/type, кортежи и функции.
 // 14-checkpoint.md — итоги, самопроверка и что закрепить перед продолжением.
-// 15-mapped-types.ts — преобразование свойств и модификаторов типа.
-// 16-utility-types.ts — готовые Partial, Pick, Omit, Record и другие утилиты.
-// 17-assertion-functions.ts — asserts condition и asserts value is Type.
-// 18-function-overloads.ts — перегрузки makeDate и parseInput из видео.
-// 19-conditional-types-and-infer.ts — условные типы и извлечение через infer.
-// 20-learning-advice.md — советы после курса и порядок повторения.
-// 21-quick-reference.md — шпаргалка по синтаксису, утилитам и ошибкам.
-// 22-practice-guide.md — запуск проверок, практика и план небольшого проекта.
 // Задачи.ts — твои решения задач 1–9; заметки по ним в 14-checkpoint.md.
 // archive/1.original.ts.txt — исходный конспект без изменений (с неточностями).
 // archive/checkpoint-2026-09-22/ — оригиналы файлов перед текущим оформлением.
-// archive/final-topics-2026-09-22/ — оригиналы последних пяти тем и оглавлений.
 // export {} изолирует имена каждого файла, чтобы примеры не конфликтовали.

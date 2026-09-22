@@ -20,9 +20,6 @@ export {};
 // 17-assertion-functions.ts — asserts condition и asserts value is Type.
 // 18-function-overloads.ts — перегрузки makeDate и parseInput из видео.
 // 19-conditional-types-and-infer.ts — условные типы и извлечение через infer.
-// 20-learning-advice.md — советы после курса и порядок повторения.
-// 21-quick-reference.md — шпаргалка по синтаксису, утилитам и ошибкам.
-// 22-practice-guide.md — запуск проверок, практика и план небольшого проекта.
 // Задачи.ts — твои решения задач 1–9; заметки по ним в 14-checkpoint.md.
 // archive/1.original.ts.txt — исходный конспект без изменений (с неточностями).
 // archive/checkpoint-2026-09-22/ — оригиналы файлов перед текущим оформлением.

@@ -1,0 +1,28 @@
+export {}
+
+interface User {
+    name: string;
+    age: number;
+    friends: Array<string>;
+}
+
+type OptionalType<T> = {
+    readonly [K in keyof T]?: T[K] | null;
+}
+
+type EditType<T> = {
+    -readonly [K in keyof T]?: T[K];
+}
+
+type NewUser = OptionalType<User>
+type NewUser2 = EditType<NewUser>
+
+type ArrayAnalog<T> = {
+    [K in number]: T;
+}
+
+// const array: ArrayAnalog<string> = ['123', '123', 5]
+
+type WithputType<T> = {
+    [K in keyof T as Exclude<K, 'type'>]: T[K];
+}

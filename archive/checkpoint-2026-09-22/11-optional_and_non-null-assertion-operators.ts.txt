@@ -1,0 +1,27 @@
+export {}
+
+// optional chaining
+
+interface Person {
+    name: string;
+    address?: {
+        street: string;
+    };
+    getAge?: () => number;
+    array?: string[]
+}
+
+function prepareUser(user: Person) {
+    user.address?.street;
+    user.getAge?.();
+    user.array?.[0];
+}
+
+// non-null assertion
+// говорим, что здесь точно будет не пустое значение
+
+function prepareUser1(user: Person) {
+    user.address!.street;
+}
+
+// в продакшн не использовать!!! Лучше использовать optional chaining и добавлять проверки

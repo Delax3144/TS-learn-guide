@@ -1,0 +1,5 @@
+export {}
+
+// asserts condition (не изменяет тип) - fun fn(arg): asserts value {}
+// asserts value is Type (изменяет тип) - fun fn(arg): asserts value is User(Type) {}
+

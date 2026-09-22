@@ -1,0 +1,56 @@
+export {}
+
+// Awaited<Type>
+// Partial<Type>
+// Required<Type>
+// Readonly<Type>
+// Record<Keys, Type>
+type Color = 'red' | 'green' | 'blue' | 'yellow';
+type Status = 'success' | 'error' | 'warning';
+
+const colorsArray: Record<Color, string[]> = {
+    blue: ['123'],
+    green: ['123'],
+    red: ['123'],
+    yellow: ['123']
+}
+
+const colorsArray1: Partial<Record<Color, string[]>> = {
+    blue: ['123'],
+}
+
+// Pick<Type, Keys>
+// Omit<Type, Keys>
+interface User {
+    name: string;
+    age: number;
+    type: string;
+    friends: Array<string>;
+}
+
+type NewUser = Pick<User, 'name' | 'friends'>
+type NewUser2 = Omit<User, 'name' | 'friends'>
+
+// type Color = Box['color']
+
+// Exclude<UnionType, ExcludedMembers>
+// Extract<Type, Union>
+type Color1 = 'red' | 'green' | 'blue' | 'yellow';
+
+type NarrowColor = Exclude<Color1, 'blue' | 'yellow'>
+type NarrowColor2 = Extract<Color1, 'blue' | 'yellow'>
+
+// ReturnType<Type>
+// Parameters<Type>
+
+function fn(arg: number, arg2: string): string {
+    return ''
+}
+
+type ReturnTypeFn = ReturnType<typeof fn>
+type Params = Parameters<typeof fn>
+
+// Uppercase<StringType>
+// Lowercase<StringType>
+// Capitalize<StringType>
+// Uncapitalize<StringType>

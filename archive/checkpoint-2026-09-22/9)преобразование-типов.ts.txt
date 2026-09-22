@@ -1,0 +1,53 @@
+export {}
+
+interface Person {
+    age: number;
+    username: string;
+    password: string
+}
+
+const obj = {
+    age: 25,
+    username: 'Vasya',
+} as Person;
+
+const obj2 = <Person>{
+    age: 25,
+    username: 'Vasya',
+};
+
+const str = '123123' as unknown as number; // не использовать ибо при рантайме будет много багов
+
+const obj3 = <Person>{
+    age: 25,
+    username: 'Vasya',
+    password: '123'
+} satisfies Person;
+
+// Когда допустимо использовать AS?
+// В конфигах, в темсах, при работе с html елементами (иногда), в утилитарных функциях, когда ТС не может вывести тип
+
+function JSONParse<T>(data: string): T {
+    return JSON.parse(data) as T;
+}
+
+const parsedJson: Person = JSONParse<Person>('{age:25}')
+
+async function fn() {
+    const data = await fetch('');
+    const parsedData = await data.json();
+}
+
+const PersonKeys = {
+    age: 'age',
+    username: 'username',
+    password: 'password',
+} as const;
+
+// Array<age | username | password>
+
+function keys<T extends object>(data: T): Array<keyof T> {
+    return Object.keys(data) as Array<keyof T>
+}
+
+const k = keys(obj);

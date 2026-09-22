@@ -1,0 +1,64 @@
+export {};
+
+// Generic — параметр типа. Он сохраняет связь между входом и выходом.
+// T не означает any: для конкретного вызова TypeScript подставляет тип.
+// В записи (value: T): T первое T — тип аргумента, второе — тип результата.
+// Тип после скобок проверяет return, а не преобразует возвращаемое значение.
+// T | undefined в результате нужен, если функция может не найти элемент.
+// Часто TS выводит результат сам, но явная аннотация фиксирует твоё намерение.
+function identity<T>(value: T): T {
+    return value;
+}
+const numberValue = identity(123); // Тип выводится из аргумента.
+const textValue = identity<string>('hello'); // Можно задать явно.
+// Нельзя обещать произвольный V и вернуть T: между ними нет связи.
+
+interface User { username: string }
+interface Article { title: string }
+
+interface ApiResponse<T> {
+    status?: 'error' | 'success';
+    requestId?: string;
+    data: T;
+}
+const userResponse: ApiResponse<User> = { data: { username: 'Vasya' } };
+const articleResponse: ApiResponse<Article> = { data: { title: 'TypeScript' } };
+// Это простой контейнер, он пока не связывает status с наличием data.
+// Более точная модель success/error есть в твоей задаче 4.
+// MediaMetadata из старого примера относится к браузерному Media Session API,
+// а не к метаданным произвольного ответа сервера, поэтому здесь его нет.
+
+interface Tree<T> {
+    id: string;
+    value: T;
+    children: Tree<T>[] | null;
+}
+const treeNode: Tree<User> = {
+    id: '10',
+    value: { username: 'Vasya' },
+    children: [{ id: '11', value: { username: 'Anna' }, children: null }],
+};
+
+// extends ограничивает T: функция может пользоваться указанными полями.
+function getEntityId<T extends { id: string; createdAt: Date }>(entity: T): string {
+    return entity.id;
+}
+const entityId = getEntityId({ id: '1', createdAt: new Date(), username: 'Vasya' });
+
+class Order<T> {
+    constructor(private data: T) {}
+    getData(): T { return this.data; }
+}
+const order = new Order({ title: 'Книга' });
+const orderData = order.getData(); // { title: string }
+
+// Эти условные типы уже были в конспекте; пока достаточно понять выбор ветки.
+// Это вычисление типа компилятором, а не проверка значения при выполнении.
+type IsArray<T> = T extends unknown[] ? true : false;
+const first: IsArray<string> = false;
+const second: IsArray<string[]> = true;
+
+type ValueFor<T> = T extends User ? { value: number } : { value: string };
+const third: ValueFor<{ username: string; age: number }> = { value: 123 };
+// Проверяем именно User с username. Раньше случайно использовался другой тип.
+const fourth: ValueFor<Article> = { value: 'text' };
